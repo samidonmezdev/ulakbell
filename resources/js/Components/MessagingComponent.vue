@@ -136,33 +136,6 @@ onMounted(() => {
                 }
             })
             // Alternatif olarak tüm eventleri dinle
-            .listenAny((eventName, e) => {
-                console.log('Herhangi bir event geldi:', eventName, e);
-
-                if (eventName === 'message.sent') {
-                    try {
-                        let messageData = null;
-
-                        // String data'yı parse et
-                        if (typeof e.data === 'string') {
-                            const parsed = JSON.parse(e.data);
-                            messageData = parsed.message;
-                        } else if (e.message) {
-                            messageData = e.message;
-                        } else if (e.data && e.data.message) {
-                            messageData = e.data.message;
-                        }
-
-                        console.log('listenAny ile işlenmiş mesaj:', messageData);
-
-                        if (messageData && messageData.id) {
-                            addMessage(messageData);
-                        }
-                    } catch (err) {
-                        console.error('listenAny parse hatası:', err);
-                    }
-                }
-            });
 
     } else {
         console.error('Echo mevcut değil!');
