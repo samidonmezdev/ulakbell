@@ -69,7 +69,6 @@ const sendMessage = async () => {
         await axios.post("/api/messages", {content: newMessage.value});
         newMessage.value = "";
         // Mesaj gönderildikten sonra mesajları yenile
-        await getMessages();
     } catch (error) {
         console.error("Mesaj gönderilemedi:", error);
     }
